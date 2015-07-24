@@ -1,0 +1,15 @@
+<div class="track-chart">
+    <h2>
+        Artists By
+        <md-select placeholder="{{ defaultBucket }}" ng-model="bucket">
+            <md-option ng-repeat="interval in intervals" value="{{interval}}">{{interval}}</md-option>
+        </md-select>
+        <md-checkbox class="exclude-small" ng-model="showSingleTracks" aria-label="Show Single Tracks">
+            Show Single Tracks
+        </md-checkbox>
+    </h2>
+    <svg class="chart" id="{{ chartId }}" ng-class="{'updating': updating}"></svg>
+    <div class="loading-overlay" ng-if="updating">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+</div>

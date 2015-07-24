@@ -1,0 +1,26 @@
+{
+  "name": "last-fm-dashboard",
+  "version": "0.1.0",
+  "authors": [
+    "John Roepke <jjroepke@google.com>"
+  ],
+  "description": "Visualize last.fm data",
+  "homepage": "https://last-fm-dashboard.appspot.com/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-route": "~1.4.3",
+    "moment": "~2.10.3",
+    "nvd3": "~1.8.1",
+    "angular-material": "~0.10.0",
+    "angular-aria": "~1.4.3",
+    "angular-animate": "~1.4.3"
+  }
+}

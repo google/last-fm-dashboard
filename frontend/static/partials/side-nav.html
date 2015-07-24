@@ -1,0 +1,32 @@
+<md-toolbar class="md-theme-indigo">
+  <h1 class="md-toolbar-tools">Users</h1>
+</md-toolbar>
+<md-content layout-padding ng-controller="UsersCtrl">
+  <md-list>
+    <md-list-item ng-click="navigateUrl('/')">
+      Home
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">Users</md-subheader>
+    <md-list-item class="md-2-line" ng-repeat="user in users" ng-click="navigateTo(user)">
+      <img class="md-avatar" ng-src="{{ userImage(user, 'medium') }}">
+      <div class="md-list-item-text">
+        <h3 ng-bind="user.username"></h3>
+        <p>
+          <span ng-bind="user.downloaded_tracks"></span>/
+          <span ng-bind="user.total_tracks"></span> Tracks
+        </p>
+      </div>
+      <md-button class="md-secondary md-icon-button" ng-click="downloadTrackData(user)" aria-label="Re-Download Track Data" title="Re-Download Track Data">
+        <ng-md-icon icon="cached"></ng-md-icon>
+      </md-button>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item flex>
+        <username-picker
+            username="username"
+            on-change="changeUsername($username)">
+        </username-picker>
+    </md-list-item>
+  </md-list>
+</md-content>

@@ -1,0 +1,8 @@
+<div class="cloud">
+    <h2>Most listened-to tracks</h2>
+    <div class="tracks">
+        <span class="track" ng-repeat="track in innerTracks | orderBy:'name'" ng-show="!minCount || minCount < track.playcount">
+            <a ng-href="{{ track.url }}" ng-bind="track|extractName" title="Played {{ track.playcount }} times" style="font-size: {{ genFontSize(track.playcount, maxCount) }}px"></a>
+        </span>
+    </div>
+</div>

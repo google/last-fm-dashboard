@@ -1,0 +1,71 @@
+<md-toolbar layout="row" class="site-content-toolbar">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav()" class="md-icon-button" hide-gt-md aria-label="Toggle Menu">
+          <ng-md-icon icon="menu"></ng-md-icon>
+        </md-button>
+
+        <h1 ng-bind="username"></h1>
+
+        <div class="controls" flex>
+            <md-select ng-model="pageLimit">
+                <md-option ng-repeat="p in pagesList" ng-value="{{ p }}">{{ p * 200 }} Tracks</md-option>
+            </md-select>
+        </div>
+    </div>
+</md-toolbar>
+<md-toolbar class="md-warn" ng-if="error">
+    <div class="md-toolbar-tools">
+      <p class="md-flex" ng-bind="error"></p>
+    </div>
+</md-toolbar>
+<md-content md-scroll-y>
+    <md-toolbar class="md-info" ng-if="userDownload" md-scroll-shrink>
+        <div class="md-toolbar-tools">
+          <p class="md-flex">User data load is still in progess. Charts may be sparse until it completes.</p>
+          <span flex></span>
+          <md-button ng-click="hideDownloadBar()">x</md-button>
+        </div>
+    </md-toolbar>
+    <div layout-padding>
+        <md-progress-linear md-mode="indeterminate" ng-if="loading"></md-progress-linear>
+        <div class="dashboard">
+            <div layout="row">
+                <md-card flex="50" ng-if="error">
+                    <md-card-content>
+                        <h2 class="md-title">Error got you down?</h2>
+                        <md-button class="md-primary" ng-href="/">Save Me</md-button>
+                    </md-card-content>
+                </md-card>
+                <md-card flex="50" class="loading" ng-if="loading">
+                    <md-card-content>
+                        <h2 class="md-title">Track Data Loading...</h2>
+
+                        <div class="downloading" ng-if="!downloading">
+                            Your infinite patience is greatly appreciated.
+                        </div>
+
+                        <div class="downloading" ng-if="downloading">
+                            User {{ username }} not found. Beginning track load.
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+
+            <div ng-if="tracks.length > 0">
+                <track-metadata tracks="tracks"></track-metadata>
+                <tracks-over-time tracks="tracks" bucket="bucket"></tracks-over-time>
+
+                <div layout="column" layout-gt-lg="row">
+                    <div>
+                        <album-pie-chart tracks="tracks"></album-pie-chart>
+                        <artist-pie-chart tracks="tracks"></artist-pie-chart>
+                    </div>
+                    <div flex>
+                        <tag-cloud tracks="tracks" min-count="2"></tag-cloud>
+                        <recent-tracks tracks="tracks" limit="10"></recent-tracks>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</md-content>

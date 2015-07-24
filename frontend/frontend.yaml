@@ -1,0 +1,19 @@
+application: last-fm-dashboard
+module: default
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+# Handlers define how to route requests to your application.
+handlers:
+- url: /static
+  static_dir: static
+
+- url: .*
+  script: main.app
+
+# https://developers.google.com/appengine/docs/python/tools/libraries27
+libraries:
+- name: jinja2
+  version: latest

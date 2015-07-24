@@ -1,0 +1,9 @@
+<h2>Recent Tracks</h2>
+<div class="track" ng-repeat="track in (tracks | orderBy:'-ts' | limitTo:limit)">
+    <span class="timestamp" ng-bind="(track.ts * 1000) | date:'MM/dd/yyyy @ h:mma'"></span>
+    <div class="name" ng-bind="track.tr_nm"></div>
+    <div class="album">
+        <span ng-bind="track.ar_nm"></span> - <span ng-bind="track.al_nm"></span>
+    </div>
+</div>
+

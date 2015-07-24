@@ -1,0 +1,13 @@
+application: last-fm-dashboard
+
+dispatch:
+# Default module serves the typical web resources and all static resources.
+- url: "*/favicon.ico"
+  module: default
+
+- url: "*/api/*"
+  module: backend
+
+- url: "*/*"
+  module: default
+

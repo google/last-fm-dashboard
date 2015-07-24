@@ -1,0 +1,10 @@
+application: last-fm-dashboard
+
+queue:
+- name: download-played-tracks-push
+  rate: 1/s
+  retry_parameters:
+    min_backoff_seconds: 30
+    max_backoff_seconds: 90
+    task_retry_limit: 1
+    task_age_limit: 30m
