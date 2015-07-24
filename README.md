@@ -17,6 +17,8 @@ To run locally
 	bower install
 	grunt
 
+*Add your Last.fm API key in backend/backend.yaml*
+
 *run the app engine dev-server*
 
 	python {$CloudSDK$}/google_appengine/dev_appserver.py dispatch.yaml backend/backend.yaml frontend/frontend.yaml
