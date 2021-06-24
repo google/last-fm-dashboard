@@ -5,4 +5,4 @@
 #
 # Note: The `lib` directory is added to `sys.path` by `appengine_config.py`.
 Flask==0.10
-requests==2.7.0
+requests==2.20.0
